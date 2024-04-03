@@ -1,15 +1,9 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { TContactBody } from "../types";
+import { IContact, TContactBody } from "../types";
+import _ from "underscore";
 
 const BASE_URL = "https://contact.herokuapp.com/contact";
-/*
-GET /contact
-POST /contact
-DELETE /contact/{id}
-GET /contact/{id}
-PUT /contact/{id}
-*/
 
 export const createContactAction = createAsyncThunk(
   "createContactAction",
@@ -61,9 +55,13 @@ export const deleteContactAction = createAsyncThunk(
 
 export const updateContactAction = createAsyncThunk(
   "updateContactAction",
-  async (id: string, { rejectWithValue }) => {
+  async (contact: IContact, { rejectWithValue }) => {
+    const contactBody = _.omit(contact, "id");
     try {
-      const response = await axios.put(`${BASE_URL}/${id}`);
+      const response = await axios.put(
+        `${BASE_URL}/${contact.id}`,
+        contactBody
+      );
       return response.data;
     } catch (error: any) {
       return rejectWithValue(error.response);

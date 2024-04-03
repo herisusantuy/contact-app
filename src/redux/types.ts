@@ -7,13 +7,13 @@ export interface IContact {
   id: string;
   firstName: string;
   lastName: string;
-  age: number;
+  age: number | string;
   photo: string;
 }
 
 export type TContactBody = {
   firstName: string;
   lastName: string;
-  age: number;
+  age: string;
   photo: string;
 };
