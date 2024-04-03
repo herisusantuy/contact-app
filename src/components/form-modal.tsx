@@ -1,6 +1,14 @@
-import React, { useEffect } from "react";
-import { StyleSheet, Button, View, Image } from "react-native";
+import React, { useEffect, useState } from "react";
+import {
+  StyleSheet,
+  Button,
+  View,
+  Image,
+  TouchableOpacity,
+} from "react-native";
 import { useForm, FormProvider } from "react-hook-form";
+import * as ImagePicker from "expo-image-picker";
+import { MaterialIcons } from "@expo/vector-icons";
 import { Modal } from "./custom-modal";
 import { IContact, TContactBody } from "../redux/types";
 import FormTextField from "./form-text-field";
@@ -31,10 +39,24 @@ const FormModal = ({
       firstName: "",
       lastName: "",
       age: String(0),
-      photo:
-        "http://vignette1.wikia.nocookie.net/lotr/images/6/68/Bilbo_baggins.jpg/revision/latest?cb=20130202022550",
+      photo: "",
     },
   });
+
+  const [image, setImage] = useState<string | null>(null);
+
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 0,
+    });
+
+    if (!result.canceled) {
+      setImage(result.assets[0].uri);
+    }
+  };
 
   useEffect(() => {
     if (contact) {
@@ -49,8 +71,7 @@ const FormModal = ({
 
   const onSubmit = async (model: TContactBody) => {
     const newContact = model;
-    newContact.photo =
-      "http://vignette1.wikia.nocookie.net/lotr/images/6/68/Bilbo_baggins.jpg/revision/latest?cb=20130202022550";
+    newContact.photo = image ?? "";
 
     if (isEdit) {
       await handleUpdateContact(model);
@@ -61,8 +82,6 @@ const FormModal = ({
 
   const handleAddContact = async (model: TContactBody) => {
     const newModal = model;
-    newModal.photo =
-      "http://vignette1.wikia.nocookie.net/lotr/images/6/68/Bilbo_baggins.jpg/revision/latest?cb=20130202022550";
 
     const response = await dispatch(createContactAction(newModal));
 
@@ -105,6 +124,7 @@ const FormModal = ({
       age: "",
       photo: "",
     });
+    setImage(null);
   };
   const modalTitle: string = isEdit ? "Edit Contact" : "Add Contact";
   return (
@@ -113,6 +133,17 @@ const FormModal = ({
         <Modal.Container>
           <Modal.Header title={modalTitle} />
           <Modal.Body>
+            <View style={styles.imageContainer}>
+              {image ? (
+                <TouchableOpacity onPress={pickImage}>
+                  <Image source={{ uri: image }} style={styles.image} />
+                </TouchableOpacity>
+              ) : (
+                <TouchableOpacity onPress={pickImage} style={styles.emptyImage}>
+                  <MaterialIcons name="add-a-photo" size={80} color="black" />
+                </TouchableOpacity>
+              )}
+            </View>
             <FormTextField
               name="firstName"
               style={styles.input}
@@ -141,7 +172,7 @@ const FormModal = ({
             />
           </Modal.Body>
           <Modal.Footer>
-            <View style={{ flexDirection: "row" }}>
+            <View style={{ flexDirection: "row", paddingVertical: 30 }}>
               <Button title="Cancel" onPress={handleCancelButton} color="red" />
               <Button
                 title={
@@ -166,6 +197,25 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     padding: 10,
     borderRadius: 8,
+  },
+  imageContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    paddingVertical: 15,
+  },
+  image: {
+    width: 200,
+    height: 200,
+    borderRadius: 100,
+  },
+  emptyImage: {
+    opacity: 0.3,
+    backgroundColor: "gray",
+    width: 200,
+    height: 200,
+    borderRadius: 100,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
 
