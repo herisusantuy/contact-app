@@ -1,15 +1,15 @@
 import React, { FC } from "react";
+import { View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { FontAwesome } from "@expo/vector-icons";
 
-import AddUpdateContact from "../screens/AddUpdateContact";
 import Home from "../screens/Home";
 
 export type RootStackParam = {
   Home: undefined;
-  AddUpdate: undefined;
 };
 
 export type ScreenProps<T extends keyof RootStackParam> = FC<
@@ -35,14 +35,19 @@ const StackNavigator = () => {
           headerShown: true,
           headerTitle: "Contacts",
           headerTitleAlign: "left",
-        })}
-      />
-      <Stack.Screen
-        name="AddUpdate"
-        component={AddUpdateContact}
-        options={({ navigation, route }) => ({
-          headerShown: true,
-          headerTitle: "Add Contact",
+          // headerRight: () => (
+          //   <View
+          //     style={{
+          //       flexDirection: "row",
+          //       paddingHorizontal: 10,
+          //       width: 70,
+          //       justifyContent: "space-between",
+          //     }}
+          //   >
+          //     <FontAwesome name="search" size={20} color="black" />
+          //     <FontAwesome name="sort-alpha-asc" size={20} color="black" />
+          //   </View>
+          // ),
         })}
       />
     </Stack.Navigator>

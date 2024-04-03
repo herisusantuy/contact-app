@@ -35,6 +35,11 @@ export default function Home() {
     setIsVisible(true);
   };
 
+  const handleAddContact = () => {
+    setIsEdit(false);
+    setIsVisible(true);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <FormModal
@@ -58,7 +63,7 @@ export default function Home() {
         />
       )}
 
-      <FloatingButton onPress={() => setIsVisible(true)} />
+      <FloatingButton onPress={handleAddContact} />
     </SafeAreaView>
   );
 }

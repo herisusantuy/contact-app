@@ -1,7 +1,6 @@
 import { View, Text, Image, StyleSheet, Animated } from "react-native";
 import React from "react";
-import { Ionicons } from "@expo/vector-icons";
-import { Feather } from "@expo/vector-icons";
+import { Ionicons, Feather } from "@expo/vector-icons";
 import {
   Swipeable,
   TouchableOpacity,
@@ -9,7 +8,10 @@ import {
 } from "react-native-gesture-handler";
 import { IContact } from "../redux/types";
 import { useAppDispatch } from "../redux/store/hooks";
-import { deleteContactAction } from "../redux/action/contactAction";
+import {
+  deleteContactAction,
+  getContactsAction,
+} from "../redux/action/contactAction";
 
 interface CardContactProps {
   contact: IContact;
@@ -26,7 +28,10 @@ export default function CardContact(props: CardContactProps) {
   const fullname = `${firstName} ${lastName}`;
 
   const handleDeleteItem = async (id: string) => {
-    const res = await dispatch(deleteContactAction(id));
+    const response = await dispatch(deleteContactAction(id));
+    if (response.type === "deleteContactAction/fulfilled") {
+      await dispatch(getContactsAction());
+    }
   };
 
   const renderRightActions = (

@@ -48,6 +48,7 @@ export const deleteContactAction = createAsyncThunk(
       const response = await axios.delete(`${BASE_URL}/${id}`);
       return response.data;
     } catch (error: any) {
+      console.log("🚀 ~ error:", error);
       return rejectWithValue(error.response);
     }
   }

@@ -26,7 +26,7 @@ const FormModal = ({
 }: FormModalProps) => {
   const dispatch = useAppDispatch();
   const formMethods = useForm<TContactBody>({
-    mode: "onBlur",
+    mode: "onChange",
     defaultValues: {
       firstName: "",
       lastName: "",
@@ -69,7 +69,12 @@ const FormModal = ({
     if (response.type === "createContactAction/fulfilled") {
       onClose();
       await dispatch(getContactsAction());
-      formMethods.reset();
+      formMethods.reset({
+        firstName: "",
+        lastName: "",
+        age: "",
+        photo: "",
+      });
     }
   };
 
@@ -83,13 +88,23 @@ const FormModal = ({
     if (response.type === "updateContactAction/fulfilled") {
       onClose();
       await dispatch(getContactsAction());
-      formMethods.reset();
+      formMethods.reset({
+        firstName: "",
+        lastName: "",
+        age: "",
+        photo: "",
+      });
     }
   };
 
   const handleCancelButton = () => {
     onClose();
-    formMethods.reset();
+    formMethods.reset({
+      firstName: "",
+      lastName: "",
+      age: "",
+      photo: "",
+    });
   };
   const modalTitle: string = isEdit ? "Edit Contact" : "Add Contact";
   return (
@@ -127,11 +142,14 @@ const FormModal = ({
           </Modal.Body>
           <Modal.Footer>
             <View style={{ flexDirection: "row" }}>
-              <Button title="Cancel" onPress={handleCancelButton} />
+              <Button title="Cancel" onPress={handleCancelButton} color="red" />
               <Button
-                title="Add"
+                title={
+                  formMethods.formState.isSubmitting ? "Loading..." : "Save"
+                }
                 onPress={formMethods.handleSubmit(onSubmit)}
                 disabled={formMethods.formState.isSubmitting}
+                color="green"
               />
             </View>
           </Modal.Footer>
