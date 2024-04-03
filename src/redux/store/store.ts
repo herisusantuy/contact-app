@@ -3,7 +3,7 @@ import contactReducer from "../slice/contact";
 
 const store = configureStore({
   reducer: {
-    card: contactReducer,
+    contact: contactReducer,
   },
 });
 

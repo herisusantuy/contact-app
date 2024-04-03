@@ -27,8 +27,8 @@ export const getContactsAction = createAsyncThunk(
   "getContactsAction",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.post(BASE_URL);
-      return response.data;
+      const response = await axios.get(BASE_URL);
+      return response.data.data;
     } catch (error: any) {
       return rejectWithValue(error.response);
     }
