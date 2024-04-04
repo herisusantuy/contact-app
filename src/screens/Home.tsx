@@ -4,6 +4,8 @@ import {
   StatusBar,
   SafeAreaView,
   ActivityIndicator,
+  Text,
+  View,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import FloatingButton from "../components/floating-button";
@@ -62,6 +64,13 @@ export default function Home() {
             />
           )}
           keyExtractor={(item) => item.id}
+          ListEmptyComponent={
+            <View style={styles.emptyContainer}>
+              <Text style={styles.emptyText}>
+                Data contact is not available!
+              </Text>
+            </View>
+          }
         />
       )}
 
@@ -78,5 +87,17 @@ const styles = StyleSheet.create({
   },
   spinner: {
     marginTop: 20,
+  },
+  emptyContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: StatusBar.currentHeight || 0,
+    paddingVertical: 50,
+  },
+  emptyText: {
+    fontSize: 18,
+    fontWeight: "600",
+    textAlign: "center",
   },
 });

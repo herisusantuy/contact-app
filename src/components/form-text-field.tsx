@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { TextInput } from "react-native";
 import { useFormContext, Controller, RegisterOptions } from "react-hook-form";
+import { testID } from "../utils/constants";
 
 type Props = React.ComponentProps<typeof TextInput> & {
   name: string;
@@ -40,6 +41,7 @@ const FormTextField: React.FC<Props> = (props) => {
         fieldState,
       }) => (
         <TextInput
+          testID={testID.textInput}
           {...restOfProps}
           onBlur={onBlur}
           onChangeText={(text) => {

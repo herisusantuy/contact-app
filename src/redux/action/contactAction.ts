@@ -3,7 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { IContact, TContactBody } from "../types";
 import _ from "underscore";
 
-const BASE_URL = "https://contact.herokuapp.com/contact";
+export const BASE_URL = "https://contact.herokuapp.com/contact";
 
 export const createContactAction = createAsyncThunk(
   "createContactAction",

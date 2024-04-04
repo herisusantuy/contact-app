@@ -1,13 +1,17 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import contactReducer from "../slice/contact";
 
-const store = configureStore({
-  reducer: {
-    contact: contactReducer,
-  },
+const rootReducer = combineReducers({
+  contact: contactReducer,
 });
 
-export default store;
+export const setupStore = (preloadedState?: Partial<RootState>) => {
+  return configureStore({
+    reducer: rootReducer,
+    preloadedState,
+  });
+};
 
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof rootReducer>;
+export type AppStore = ReturnType<typeof setupStore>;
+export type AppDispatch = AppStore["dispatch"];

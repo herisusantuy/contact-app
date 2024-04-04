@@ -12,6 +12,7 @@ import {
   deleteContactAction,
   getContactsAction,
 } from "../redux/action/contactAction";
+import { testID } from "../utils/constants";
 
 interface CardContactProps {
   contact: IContact;
@@ -59,7 +60,10 @@ export default function CardContact(props: CardContactProps) {
   };
   return (
     <GestureHandlerRootView>
-      <Swipeable renderRightActions={renderRightActions}>
+      <Swipeable
+        renderRightActions={renderRightActions}
+        testID={testID.swipeableWrapper}
+      >
         <View style={styles.container}>
           <Image
             source={{ uri: imageUrl }}
@@ -67,10 +71,15 @@ export default function CardContact(props: CardContactProps) {
             height={50}
             resizeMode="cover"
             style={styles.image}
+            testID={testID.photoProfile}
           />
           <View style={styles.textContainer}>
-            <Text style={styles.textName}>{fullname}</Text>
-            <Text style={styles.textAge}>Age: {age}</Text>
+            <Text style={styles.textName} testID={testID.fullnameText}>
+              {fullname}
+            </Text>
+            <Text style={styles.textAge} testID={testID.ageText}>
+              Age: {age}
+            </Text>
           </View>
         </View>
       </Swipeable>

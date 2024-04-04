@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import { TouchableOpacity, StyleSheet } from "react-native";
 import AntDesign from "@expo/vector-icons/AntDesign";
-import { useNavigation } from "@react-navigation/native";
-import { ScreenNavigationProps } from "../navigations/root-stack";
+import { testID } from "../utils/constants";
 
 interface FloatingButtonProps {
   onPress: () => void;
 }
 const FloatingButton = ({ onPress }: FloatingButtonProps) => {
-  const navigation = useNavigation<ScreenNavigationProps>();
   return (
-    <TouchableOpacity style={styles.container} onPress={onPress}>
-      <AntDesign name="plus" size={32} color="white" />
+    <TouchableOpacity
+      style={styles.container}
+      onPress={onPress}
+      testID={testID.pressableView}
+    >
+      <AntDesign name="plus" size={32} color="white" testID={testID.plusIcon} />
     </TouchableOpacity>
   );
 };

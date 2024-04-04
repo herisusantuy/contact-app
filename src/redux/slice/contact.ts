@@ -16,7 +16,7 @@ interface InitialState {
   message: string;
 }
 
-const initialState: InitialState = {
+export const initialState: InitialState = {
   isFetching: false,
   isMutating: false,
   contacts: [],
