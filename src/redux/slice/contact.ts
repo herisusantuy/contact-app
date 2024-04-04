@@ -9,14 +9,16 @@ import {
 import { ContactResponse, IContact } from "./../types";
 
 interface InitialState {
-  loading: boolean;
+  isFetching: boolean;
+  isMutating: boolean;
   contacts: IContact[] | [];
   error: string;
   message: string;
 }
 
 const initialState: InitialState = {
-  loading: false,
+  isFetching: false,
+  isMutating: false,
   contacts: [],
   error: "",
   message: "",
@@ -30,20 +32,20 @@ const contactSlice = createSlice({
     builder.addCase(createContactAction.pending, (state, action) => {
       return {
         ...state,
-        loading: true,
+        isFetching: true,
       };
     });
     builder.addCase(createContactAction.fulfilled, (state, action) => {
       return {
         ...state,
-        loading: false,
+        isFetching: false,
         message: "Successfully create contact.",
       };
     });
     builder.addCase(createContactAction.rejected, (state, action) => {
       return {
         ...state,
-        loading: false,
+        isFetching: false,
         error: "Failed to create contact.",
       };
     });
@@ -51,7 +53,7 @@ const contactSlice = createSlice({
     builder.addCase(getContactsAction.pending, (state, action) => {
       return {
         ...state,
-        loading: true,
+        isFetching: true,
       };
     });
     builder.addCase(
@@ -59,7 +61,7 @@ const contactSlice = createSlice({
       (state, action: PayloadAction<IContact[]>) => {
         return {
           ...state,
-          loading: false,
+          isFetching: false,
           contacts: action.payload,
         };
       }
@@ -67,7 +69,7 @@ const contactSlice = createSlice({
     builder.addCase(getContactsAction.rejected, (state, action) => {
       return {
         ...state,
-        loading: false,
+        isFetching: false,
         error: "Failed to get contacts.",
       };
     });
@@ -75,20 +77,20 @@ const contactSlice = createSlice({
     builder.addCase(getContactAction.pending, (state, action) => {
       return {
         ...state,
-        loading: true,
+        isFetching: true,
       };
     });
     builder.addCase(getContactAction.fulfilled, (state, action) => {
       return {
         ...state,
-        loading: false,
+        isFetching: false,
         message: "Successfully get contact.",
       };
     });
     builder.addCase(getContactAction.rejected, (state, action) => {
       return {
         ...state,
-        loading: false,
+        isFetching: false,
         error: "Failed to get contact!",
       };
     });
@@ -96,20 +98,20 @@ const contactSlice = createSlice({
     builder.addCase(deleteContactAction.pending, (state, action) => {
       return {
         ...state,
-        loading: true,
+        isMutating: true,
       };
     });
     builder.addCase(deleteContactAction.fulfilled, (state, action) => {
       return {
         ...state,
-        loading: false,
+        isMutating: false,
         message: "Successfully delete contact.",
       };
     });
     builder.addCase(deleteContactAction.rejected, (state, action) => {
       return {
         ...state,
-        loading: false,
+        isMutating: false,
         error: "Failed to delete contact!",
       };
     });
@@ -117,20 +119,20 @@ const contactSlice = createSlice({
     builder.addCase(updateContactAction.pending, (state, action) => {
       return {
         ...state,
-        loading: true,
+        isMutating: true,
       };
     });
     builder.addCase(updateContactAction.fulfilled, (state, action) => {
       return {
         ...state,
-        loading: false,
+        isMutating: false,
         message: "Successfully update contact.",
       };
     });
     builder.addCase(updateContactAction.rejected, (state, action) => {
       return {
         ...state,
-        loading: false,
+        isMutating: false,
         error: "Failed to update contact!",
       };
     });

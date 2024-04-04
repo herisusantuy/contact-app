@@ -14,7 +14,9 @@ import FormModal from "../components/form-modal";
 import { IContact, TContactBody } from "../redux/types";
 
 export default function Home() {
-  const { contacts, loading, error } = useAppSelector((state) => state.contact);
+  const { contacts, isFetching, error } = useAppSelector(
+    (state) => state.contact
+  );
   const dispatch = useAppDispatch();
 
   const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -48,7 +50,7 @@ export default function Home() {
         isEdit={isEdit}
         contact={selectedContact}
       />
-      {loading ? (
+      {isFetching ? (
         <ActivityIndicator style={styles.spinner} />
       ) : (
         <FlatList
