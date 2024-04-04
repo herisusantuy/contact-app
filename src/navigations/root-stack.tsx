@@ -35,19 +35,6 @@ const StackNavigator = () => {
           headerShown: true,
           headerTitle: "Contacts",
           headerTitleAlign: "left",
-          // headerRight: () => (
-          //   <View
-          //     style={{
-          //       flexDirection: "row",
-          //       paddingHorizontal: 10,
-          //       width: 70,
-          //       justifyContent: "space-between",
-          //     }}
-          //   >
-          //     <FontAwesome name="search" size={20} color="black" />
-          //     <FontAwesome name="sort-alpha-asc" size={20} color="black" />
-          //   </View>
-          // ),
         })}
       />
     </Stack.Navigator>

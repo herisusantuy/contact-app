@@ -22,4 +22,12 @@ describe("Floating Button", () => {
     fireEvent.press(pressableView);
     expect(mockOnPress).toHaveBeenCalled();
   });
+
+  it("Floating button render correctly..", () => {
+    const mockOnPress = jest.fn();
+    const tree = renderWithProviders(
+      <FloatingButton onPress={mockOnPress} />
+    ).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });

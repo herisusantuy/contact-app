@@ -60,7 +60,31 @@
       "**/__tests__/**/*.ts?(x)",
       "**/?(*.)+(spec|test).ts?(x)",
       "**/?(*.)+(spec|test).js?(x)"
-    ]
+    ],
+    "fakeTimers": {
+      "advanceTimers": 40,
+      "doNotFake": [
+        "Date",
+        "hrtime",
+        "nextTick",
+        "performance",
+        "queueMicrotask",
+        "requestAnimationFrame",
+        "cancelAnimationFrame",
+        "requestIdleCallback",
+        "cancelIdleCallback",
+        "setImmediate",
+        "clearImmediate",
+        "setInterval",
+        "clearInterval",
+        "setTimeout",
+        "clearTimeout"
+      ],
+      "enableGlobally": true,
+      "legacyFakeTimers": false,
+      "now": 1483228800000,
+      "timerLimit": 1000
+    }
   },
   "private": true
 }

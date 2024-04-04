@@ -1,0 +1,243 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card contact Card contact render correctly.. 1`] = `
+<View>
+  <View
+    collapsable={false}
+    handlerTag={5}
+    handlerType="PanGestureHandler"
+    onGestureHandlerEvent={[Function]}
+    onGestureHandlerStateChange={[Function]}
+    onLayout={[Function]}
+    style={
+      {
+        "overflow": "hidden",
+      }
+    }
+    testID="card-contact-swipeable-wrapper"
+  >
+    <View
+      collapsable={false}
+      style={
+        {
+          "bottom": 0,
+          "flexDirection": "row-reverse",
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+          "transform": [
+            {
+              "translateX": -10000,
+            },
+          ],
+        }
+      }
+    >
+      <View
+        style={
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "flex-end",
+            "minHeight": 50,
+            "width": 100,
+          }
+        }
+      >
+        <View
+          collapsable={false}
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "height": "100%",
+              "justifyContent": "space-between",
+              "opacity": 0,
+              "paddingHorizontal": 15,
+              "width": 100,
+            }
+          }
+        >
+          <RNGestureHandlerButton
+            collapsable={false}
+            delayLongPress={600}
+            enabled={true}
+            exclusive={true}
+            handlerTag={6}
+            handlerType="NativeViewGestureHandler"
+            onGestureEvent={[Function]}
+            onGestureHandlerEvent={[Function]}
+            onGestureHandlerStateChange={[Function]}
+            onHandlerStateChange={[Function]}
+            rippleColor={0}
+            touchSoundDisabled={false}
+          >
+            <View
+              accessible={true}
+              collapsable={false}
+              style={
+                {
+                  "opacity": 1,
+                }
+              }
+            >
+              <Text
+                allowFontScaling={false}
+                selectable={false}
+                style={
+                  [
+                    {
+                      "color": "black",
+                      "fontSize": 24,
+                    },
+                    undefined,
+                    {
+                      "fontFamily": "feather",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    {},
+                  ]
+                }
+              >
+                
+              </Text>
+            </View>
+          </RNGestureHandlerButton>
+          <RNGestureHandlerButton
+            collapsable={false}
+            delayLongPress={600}
+            enabled={true}
+            exclusive={true}
+            handlerTag={7}
+            handlerType="NativeViewGestureHandler"
+            onGestureEvent={[Function]}
+            onGestureHandlerEvent={[Function]}
+            onGestureHandlerStateChange={[Function]}
+            onHandlerStateChange={[Function]}
+            rippleColor={0}
+            touchSoundDisabled={false}
+          >
+            <View
+              accessible={true}
+              collapsable={false}
+              style={
+                {
+                  "opacity": 1,
+                }
+              }
+            >
+              <Text
+                allowFontScaling={false}
+                selectable={false}
+                style={
+                  [
+                    {
+                      "color": "black",
+                      "fontSize": 24,
+                    },
+                    undefined,
+                    {
+                      "fontFamily": "ionicons",
+                      "fontStyle": "normal",
+                      "fontWeight": "normal",
+                    },
+                    {},
+                  ]
+                }
+              >
+                
+              </Text>
+            </View>
+          </RNGestureHandlerButton>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+      />
+    </View>
+    <View
+      collapsable={false}
+      handlerTag={8}
+      handlerType="TapGestureHandler"
+      onGestureHandlerEvent={[Function]}
+      onGestureHandlerStateChange={[Function]}
+      pointerEvents="auto"
+      style={
+        {
+          "transform": [
+            {
+              "translateX": -0,
+            },
+          ],
+        }
+      }
+    >
+      <View
+        style={
+          {
+            "alignItems": "center",
+            "flex": 1,
+            "flexDirection": "row",
+            "marginVertical": 5,
+            "minHeight": 50,
+            "paddingHorizontal": 10,
+            "paddingLeft": 5,
+          }
+        }
+      >
+        <Image
+          height={50}
+          resizeMode="cover"
+          source={
+            {
+              "uri": "http://vignette1.wikia.nocookie.net/lotr/images/6/68/Bilbo_baggins.jpg/revision/latest?cb=20130202022550",
+            }
+          }
+          style={
+            {
+              "borderRadius": 50,
+              "marginRight": 10,
+            }
+          }
+          testID="card-contact-photo-profile"
+          width={50}
+        />
+        <View
+          style={
+            {
+              "flexDirection": "column",
+              "justifyContent": "flex-start",
+            }
+          }
+        >
+          <Text
+            style={
+              {
+                "fontSize": 18,
+                "fontWeight": "600",
+              }
+            }
+            testID="card-contact-fullname-text"
+          >
+            Bilbo Baggins
+          </Text>
+          <Text
+            style={
+              {
+                "fontSize": 14,
+                "fontWeight": "normal",
+              }
+            }
+            testID="card-contact-age-text"
+          >
+            Age: 
+            111
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
