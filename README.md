@@ -14,3 +14,6 @@ A simple crud app as an assignment from Jenius test. This app provides a list of
 -  React hook form
 -  React Navigation
 -  React native modal
+
+## Downloadable APK
+[Contact App](https://drive.google.com/file/d/1kCTtXQB24SMwCaeueFnu6aCmjmw2EPK2/view?usp=sharing) 
