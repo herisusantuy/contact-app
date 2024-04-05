@@ -11,15 +11,22 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.herisusanto.contactapp"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ],
+      "package": "com.herisusanto.contactapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -32,6 +39,11 @@
           "cameraPermission": "The app accesses your camera to update contact profile."
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "881d0325-1187-4649-9c65-d555a571f457"
+      }
+    }
   }
 }
