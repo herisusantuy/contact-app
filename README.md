@@ -1,13 +1,13 @@
 # Contact App
-![Preview](https://github.com/herrisusanto/spotify-uikit-app/blob/main/spotify-uikit-app/Resources/preview.gif)
+![Preview](https://github.com/herisusantuy/contact-app/blob/master/assets/Simulator%20Screen%20Recording%20-%20iPhone%2015%20Pro%20-%202024-04-05%20at%2012.48.41.gif)
 
 ## Description
 
 A simple crud app as an assignment from Jenius test. This app provides a list of contacts and also has a feature to delete and update the contacts.
 
 ## Features
-- Show a list of contacts from database.
-- Edit and Update contact by swipe it.
+- Show a list of contacts from the database.
+- Edit and Update contact by swiping it.
 
 ## Package Dependencies
 -  Redux Toolkit
