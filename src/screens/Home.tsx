@@ -56,6 +56,7 @@ export default function Home() {
         <ActivityIndicator style={styles.spinner} />
       ) : (
         <FlatList
+          testID=""
           data={contacts}
           renderItem={({ item }) => (
             <CardContact
